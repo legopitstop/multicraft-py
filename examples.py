@@ -1,6 +1,5 @@
 import multicraft
 
-
 api = multicraft.MulticraftAPI(
     url = 'https://localhost/api.php',
     user = 'username',

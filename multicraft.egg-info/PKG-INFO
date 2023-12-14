@@ -1,3 +1,22 @@
+Metadata-Version: 2.1
+Name: multicraft
+Version: 0.0.2
+Summary: Interact with your Minecraft server from hosts that use Multicraft using Python
+Home-page: https://github.com/legopitstop/multicraft-py
+Author: Legopitstop
+Author-email: officiallegopitstop@gmail.com
+License: MIT
+Keywords: multicraft,minecraft,minecraftserver,server
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # multicraft
 
 [![PyPI](https://img.shields.io/pypi/v/multicraft)](https://pypi.org/project/multicraft/)

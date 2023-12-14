@@ -512,6 +512,38 @@ class ServerStatus:
         if 'players' in data: self.players = data.pop('players')
         return self
     
+class ServerResources:
+    def __init__(self, cpu:float, memory:float, quota:int):
+        setattr(self, '_cpu', cpu)
+        setattr(self, '_memory', memory)
+        setattr(self, '_quota', quota)
+
+    def __repr__(self):
+        return str(self)
+
+    def __str__(self) -> str:
+        return f"ServerResources(cpu={self.cpu}, memory={self.memory}, quota={self.quota})"
+    
+    @property
+    def cpu(self) -> float:
+        return getattr(self, '_cpu')
+
+    @property
+    def memory(self) -> float:
+        return getattr(self, '_memory')
+
+    @property
+    def quota(self) -> int:
+        return getattr(self, '_quota')
+    
+    @classmethod
+    def from_json(cls, data:dict):
+        self = cls.__new__(cls)
+        setattr(self, '_cpu', float(data.get('cpu')))
+        setattr(self, '_memory', float(data.get('memory')))
+        setattr(self, '_quota', int(data.get('quota')))
+        return self
+
 class ChatMessage:
     def __init__(self, text:str, name:str, time:datetime):
         self.text = text
@@ -736,38 +768,6 @@ class Player:
     def delete(self):
         raise NotImplementedError()
     
-class ServerResources:
-    def __init__(self, cpu:float, memory:float, quota:int):
-        setattr(self, '_cpu', cpu)
-        setattr(self, '_memory', memory)
-        setattr(self, '_quota', quota)
-
-    def __repr__(self):
-        return str(self)
-
-    def __str__(self) -> str:
-        return f"ServerResources(cpu={self.cpu}, memory={self.memory}, quota={self.quota})"
-    
-    @property
-    def cpu(self) -> float:
-        return getattr(self, '_cpu')
-
-    @property
-    def memory(self) -> float:
-        return getattr(self, '_memory')
-
-    @property
-    def quota(self) -> int:
-        return getattr(self, '_quota')
-    
-    @classmethod
-    def from_json(cls, data:dict):
-        self = cls.__new__(cls)
-        setattr(self, '_cpu', float(data.get('cpu')))
-        setattr(self, '_memory', float(data.get('memory')))
-        setattr(self, '_quota', int(data.get('quota')))
-        return self
-
 class Schedule:
     def __init__(self, id:int, name:str, server_id:int=None, scheduled_ts:datetime.datetime=None, last_run_ts:datetime.datetime=None, interval:float=None, command:int=None, run_for:int=None, status:int=None, args:str=None, hidden:bool=None, **kw):
         self.id = id
@@ -1098,4 +1098,3 @@ class Backup:
         if 'file' in data: self.file = data.pop('file')
         if 'time' in data: self.time = data.pop('time')
         return self
-

@@ -7,7 +7,7 @@ required_modules = ['requests']
 
 setuptools.setup(
     name='multicraft',
-    version='0.0.1',
+    version='0.0.2',
     author='Legopitstop',
     description='Interact with your Minecraft server from hosts that use Multicraft using Python',
     long_description=long_description,
