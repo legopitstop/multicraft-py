@@ -1,3 +1,5 @@
 /.env
 /test.py
 /app.py
+__pycache__/
+dist
