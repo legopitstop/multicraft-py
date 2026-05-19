@@ -1,11 +1,9 @@
 """
 Interact with your Minecraft server from hosts that use [Multicraft](https://www.multicraft.org/) using Python.
 """
-class MulticraftException(Exception): pass
 
-__version__ = '0.0.2'
+__version__ = "0.0.3"
 
-from .hosts import *
-from .model import *
-from .api import MulticraftAPI
-from .app import MulticraftApp
+from .core.errors import *
+from .core.model import *
+from .core.base import *

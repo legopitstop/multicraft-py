@@ -1,60 +1,86 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: multicraft
-Version: 0.0.2
-Summary: Interact with your Minecraft server from hosts that use Multicraft using Python
-Home-page: https://github.com/legopitstop/multicraft-py
+Version: 0.0.3
+Summary: Interact with your Minecraft server from hosts that use Multicraft in Python
+Home-page: https://github.com/legopitstop/multicraft-py/
 Author: Legopitstop
-Author-email: officiallegopitstop@gmail.com
+Author-email: contact@lpsmods.dev
 License: MIT
-Keywords: multicraft,minecraft,minecraftserver,server
+Project-URL: Download, https://github.com/legopitstop/multicraft-py/releases
+Project-URL: Documentation, https://docs.lpsmods.dev/multicraft
+Project-URL: Source Code, https://github.com/legopitstop/multicraft-py
+Keywords: multicraft,Minecraft,minecraftserver,server
 Classifier: Development Status :: 4 - Beta
 Classifier: Intended Audience :: Developers
-Classifier: Topic :: Software Development :: Build Tools
 Classifier: License :: OSI Approved :: MIT License
-Classifier: Operating System :: Microsoft :: Windows
 Classifier: Programming Language :: Python :: 3.11
-Requires-Python: >=3.10
+Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: python-dotenv
+Requires-Dist: pydantic
+Provides-Extra: testing
+Requires-Dist: pytest>=6.0; extra == "testing"
+Requires-Dist: pytest-cov>=2.0; extra == "testing"
+Requires-Dist: mypy>=0.910; extra == "testing"
+Requires-Dist: flake8>=3.9; extra == "testing"
+Requires-Dist: tox>=3.24; extra == "testing"
+Dynamic: license-file
 
 # multicraft
 
+![Tests](https://github.com/legopitstop/multicraft-py/actions/workflows/tests.yml/badge.svg)
 [![PyPI](https://img.shields.io/pypi/v/multicraft)](https://pypi.org/project/multicraft/)
 [![Python](https://img.shields.io/pypi/pyversions/multicraft)](https://www.python.org/downloads/)
 ![Downloads](https://img.shields.io/pypi/dm/multicraft)
 ![Status](https://img.shields.io/pypi/status/multicraft)
 [![Issues](https://img.shields.io/github/issues/legopitstop/multicraft-py)](https://github.com/legopitstop/multicraft-py/issues)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
-Interact with your Minecraft server from hosts that use [Multicraft](https://www.multicraft.org/) using Python.
+Interact with your Minecraft server from hosts that use [Multicraft](https://www.multicraft.org/) in Python.
 
 ## Installation
+
 Install the module with pip:
+
 ```bat
 pip3 install multicraft
 ```
+
 Update existing installation: `pip3 install multicraft --upgrade`
 
+## Links
+
+- [Documentation](https://docs.lpsmods.dev/multicraft)
+- [Source Code](https://github.com/legopitstop/multicraft-py)
+
 ## Features
+
 - Includes a handful of common multicraft hosts.
 - Manage users, players, commands, schedules, and databases.
 - Start, stop, or restart your server.
 - Run console commands (give, kill, whitelist, op, etc)
-- Read your servers current cpu and memmory usage.
+- Read your server's current CPU and memory usage.
 - Send a chat message.
 
 See the [docs](https://github.com/legopitstop/multicraft-py/wiki) for more information.
 
 ## Dependencies
-|Name|Description|
-|--|--|
-|[requests](https://pypi.org/project/requests/) | Requests is a simple, yet elegant, HTTP library. |
+
+| Name                                           | Description                                      |
+| ---------------------------------------------- | ------------------------------------------------ |
+| [requests](https://pypi.org/project/requests/) | Requests is a simple, yet elegant, HTTP library. |
+| [pydantic](https://pypi.org/project/pydantic/) | Data validation using Python type hints          |
 
 ## Example
+
 ```py
 from multicraft import MulticraftAPI
+from multicraft.hosts import BISECT_PREMIUM
 
 api = MulticraftAPI(
-    url = 'https://localhost/api.php',
+    host = BISECT_PREMIUM,
     user = 'username',
     key = 'apiKey'
 )
